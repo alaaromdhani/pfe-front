@@ -1,0 +1,64 @@
+<ion-content>
+  <ion-item-divider>
+  </ion-item-divider>
+  <ion-item>
+    <div class="mb1">
+        <div style="display: flex;align-items: center;
+        gap: 0.5em;">
+          <ion-icon name="arrow-back-outline" (click)="closeModal()"></ion-icon>
+          <h2 class="h3 mt3 mb1" style="right:0px">
+            {{add?'Add':'Update'}} Role
+          </h2>
+          
+        </div>
+      <hr>
+    </div>
+   </ion-item>
+  <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation24 MuiDialog-paper MuiDialog-paperScrollBody MuiDialog-paperWidthLg MuiDialog-paperFullWidth css-ve4cu8" role="dialog" aria-labelledby=":r0:">
+    <h2 class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-16msze3" id=":r0:">
+      <span class="MuiTypography-root MuiTypography-h5 css-zbrova">{{add?'Add':'Update'}} Role</span>
+      <p *ngIf="!add" class="MuiTypography-root MuiTypography-body2 css-uxzwq0">Définir les autorisations du rôle</p>
+    </h2>
+    
+    <form class="ion-padding" [formGroup]="setPermissionsForm">
+      <div class="form-field">
+        <ion-label [ngClass]="
+          inputFocused['name']?'label-focuced':''
+    
+        ">Name</ion-label>
+        <input (focus)="inputFocused['name']=true" (blur)="this.setPermissionsForm.controls['name'].value===''?inputFocused['name']=false:inputFocused['name']=true" formControlName="name">   
+      </div>
+      <div class="form-field">
+        <ion-label [ngClass]="
+          inputFocused['weight']?'label-focuced':''
+    
+        ">Weight</ion-label>
+        <input (focus)="inputFocused['weight']=true" (blur)="this.setPermissionsForm.controls['weight'].value===''?inputFocused['weight']=false:inputFocused['weight']=true" formControlName="weight">   
+      </div>
+          
+      <h6 *ngIf="!add" class="MuiTypography-root MuiTypography-h6 css-1wzm76q">Autorisations de rôle (Modèles)</h6>
+      <div *ngIf="!add">
+        <div *ngFor="let model of models" >
+          <div class="model" (click)="expandActions(model)">
+            <ion-icon name="chevron-forward-outline"></ion-icon> 
+          <ion-checkbox [checked]="haveAllActions(model)"></ion-checkbox>
+          {{model}}
+          </div>
+          <div  *ngIf="actionExpanded[model]" class="actions">
+            <div *ngFor="let a of Upermissions[model]">
+              <ion-checkbox (ionChange)="handleAction(model,a)" [checked]="hasAction(model,a)"></ion-checkbox>
+            {{a}}
+            </div>
+             
+          </div>
+        </div>
+        
+      </div>
+
+      <ion-button expand="block"  (click)="submitForm()" > Submit</ion-button>
+       
+    </form>
+  
+  </div>
+  
+</ion-content>

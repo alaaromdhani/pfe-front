@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>appoitments</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card *ngFor="let a of appoitments">
+    <ion-card-header color="primary">
+      <ion-card-subtitle>{{a.Patient.firstName +' '+a.Patient.lastName}}</ion-card-subtitle>
+    </ion-card-header>
+    
+    <ion-card-content>
+       <div class="user-content">
+        <div class="user-profile">
+          <img [src]="a.Patient.profilePicture" alt="">
+         </div>
+        <div>
+          {{a.message}}
+        </div>
+       </div>
+    </ion-card-content>
+    <ion-row  class="cardfooter">
+      <div class="cardfooter-stuff">
+        <div class="other" (click)="assignToDoctor(a.id)">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="20" class="iconify iconify--tabler" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M7 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1"></path><path d="M20.385 6.585a2.1 2.1 0 0 0-2.97-2.97L9 12v3h3l8.385-8.415zM16 5l3 3"></path></g></svg>
+        </div>
+        <div *ngIf="!a.assigned_to" class="other">
+          <div style="background-color: #d43434; font-weight: 900;color: white;">not assigned  </div>
+        </div>
+        <div *ngIf="a.assigned_to" style="background-color:#92ff92; " class="other">
+       <div style="font-weight: 900;">{{a.Doctor.firstName}}</div>
+        </div>
+        <div (click)="deleteAppoitment(a.id)" class="other">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="1.375rem" class="iconify iconify--flat-color-icons" width="1em" height="1em" viewBox="0 0 48 48">
+            <path fill="#90CAF9" d="M43 30V18c0-2.2-1.8-4-4-4H9c-2.2 0-4 1.8-4 4v12c0 2.2 1.8 4 4 4h30c2.2 0 4-1.8 4-4zM9 18h30v12H9V18z"></path>
+            <circle cx="38" cy="38" r="10" fill="#F44336"></circle>
+            <g fill="#fff">
+                <path d="m43.31 41.181l-2.12 2.122l-8.485-8.484l2.121-2.122z"></path>
+                <path d="m34.819 43.31l-2.122-2.12l8.484-8.485l2.122 2.121z"></path>
+            </g>
+        </svg>
+         </div>
+        
+      </div>
+    </ion-row>
+  
+  </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addAppoitment()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

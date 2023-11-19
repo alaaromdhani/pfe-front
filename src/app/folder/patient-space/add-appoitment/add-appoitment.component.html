@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>appoitments</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form class="ion-padding" [formGroup]="appoitmentForm">
+    <div class="form-field-textarea">
+      <ion-label [ngClass]="
+        inputFocused['message']?'label-focuced':''
+  
+      ">Message</ion-label>
+      <textarea (focus)="inputFocused['message']=true" (blur)="this.appoitmentForm.controls['message'].value===''?inputFocused['message']=false:inputFocused['message']=true" formControlName="message"> 
+      </textarea>  
+      </div>
+      <ion-button expand="block"  (click)="submitForm()" > Add Appoitement</ion-button>
+    
+</form>
+
+</ion-content>

@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Update Profile </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <div class="container">
+    <div class="outer"
+      [ngStyle]="{'background-image': 'url(' + photo + ')'}">
+        <div class="inner"  [ngStyle]="{'background-color':changedProfilePict?'red':'#075E54' }" (click)="change()">
+           <ion-icon [name]="changedProfilePict?'close-outline':'camera'" class="camera-icon" [ngStyle]="{}" ></ion-icon>
+        </div>
+     </div>
+  </div>
+  <form class="ion-padding" [formGroup]="profileForm">
+    <div class="form-field">
+      <ion-label [ngClass]="
+        inputFocused['firstName']?'label-focuced':''
+  
+      ">FirstName</ion-label>
+      <input (focus)="inputFocused['firstName']=true" (blur)="this.profileForm.controls['firstName'].value===''?inputFocused['firstName']=false:inputFocused['firstName']=true" formControlName="firstName">   
+    </div>
+    <div class="form-field">
+      <ion-label [ngClass]="
+        inputFocused['lastName']?'label-focuced':''
+  
+      ">LastName</ion-label>
+      <input (focus)="inputFocused['lastName']=true" (blur)="this.profileForm.controls['lastName'].value===''?inputFocused['lastName']=false:inputFocused['lastName']=true" formControlName="lastName">   
+    </div>
+    <div class="form-field">
+      <ion-label [ngClass]="
+        inputFocused['email']?'label-focuced':''
+  
+      ">Email</ion-label>
+      <input (focus)="inputFocused['email']=true" (blur)="this.profileForm.controls['email'].value===''?inputFocused['email']=false:inputFocused['email']=true" formControlName="email">   
+    </div>
+    <div class="form-field">
+      <ion-label [ngClass]="
+        inputFocused['phonenumber']?'label-focuced':''
+  
+      ">Phonenumber</ion-label>
+      <input (focus)="inputFocused['phonenumber']=true" (blur)="this.profileForm.controls['phonenumber'].value===''?inputFocused['phonenumber']=false:inputFocused['phonenumber']=true" formControlName="phonenumber">   
+    </div>
+   
+    
+
+   
+    
+     <ion-button expand="block"  (click)="updateProfile()" > Submit</ion-button>
+     
+  </form>
+
+
+</ion-content>

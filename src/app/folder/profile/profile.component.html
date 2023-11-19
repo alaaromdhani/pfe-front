@@ -1,0 +1,105 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="user">
+  <div class="main_content_div">
+    
+      <div class="user_div">
+          <div class="first_div">
+             <ion-label class="username">
+              {{user.firstName}} {{user.lastName}}
+             </ion-label>
+          </div>
+          <div class="user_back" [ngStyle]="{
+            'background-image':'url('+user.profilePicture+')'
+          }">
+
+          </div>
+      </div>
+      <div class="content_div">
+          <div class="test_details">
+            <ion-grid>
+              <ion-row >
+                <ion-col size="6">
+                    <div class="profile_top">
+                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="1.25rem" class="iconify iconify--carbon" width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M28.07 21L22 15l6.07-6l1.43 1.41L24.86 15l4.64 4.59L28.07 21zM22 30h-2v-5a5 5 0 0 0-5-5H9a5 5 0 0 0-5 5v5H2v-5a7 7 0 0 1 7-7h6a7 7 0 0 1 7 7zM12 4a5 5 0 1 1-5 5a5 5 0 0 1 5-5m0-2a7 7 0 1 0 7 7a7 7 0 0 0-7-7z"></path></svg>
+                      <p> {{user?.Role?.name}}</p>
+                    </div>               
+                </ion-col>
+                <ion-col size="6">
+                    <div class="profile_top">
+                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="1.25rem" class="iconify iconify--tabler" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><circle cx="12" cy="11" r="3"></circle><path d="M17.657 16.657L13.414 20.9a2 2 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z"></path></g></svg>              
+                      <p> Tunisia </p>
+                    </div>
+                </ion-col>
+              </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <div class="profile_top">
+                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="1.25rem" class="iconify iconify--tabler" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><rect width="16" height="16" x="4" y="5" rx="2"></rect><path d="M16 3v4M8 3v4m-4 4h16m-9 4h1m0 0v3"></path></g></svg>      
+                        <p> {{user.createdAt | date}} </p>
+                    </div>
+                  </ion-col>   
+                </ion-row>
+              <ion-row>
+                <ion-col>
+                  <div class="profile_top">
+                    
+                      <ion-button (click)="updateProfile()">
+
+                        <ion-icon name="settings-outline"></ion-icon>
+                             update profile
+                      </ion-button>
+                      </div>
+                </ion-col>   
+              </ion-row>
+            </ion-grid>
+            <div class="about_menu">
+              <div class="title">
+                About 
+              </div>
+              <div class="item">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="1.25rem" class="iconify iconify--tabler" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><circle cx="12" cy="7" r="4"></circle><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"></path></g></svg>      
+                <p> Full Name : {{user.firstName}} {{user.lastName}}</p>
+        
+
+              </div>
+              <div class="item">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="1.25rem" class="iconify iconify--tabler" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m5 12l5 5L20 7"></path></svg>
+                     <p> Status : Active</p>
+        
+
+              </div>
+              <div class="item">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="1.25rem" class="iconify iconify--tabler" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m12 6l4 6l5-4l-2 10H5L3 8l5 4z"></path></svg> 
+                  <p> Role : {{(user.Role.name[0] | uppercase)+''+user.Role.name.substring(1)}}</p>
+        
+
+              </div>
+              <div class="item">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="1.25rem" class="iconify iconify--tabler" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 5v16M19 5v9M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0M5 14a5 5 0 0 1 7 0a5 5 0 0 0 7 0"></path></svg>    
+                <p> Country : Tunisia</p>
+        
+
+              </div>
+              <!--<div class="item">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="1.25rem" class="iconify iconify--tabler" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M4 5h7M9 3v2c0 4.418-2.239 8-5 8"></path><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4m.3 7l4-9l4 9m-.9-2h-6.2"></path></g></svg>    
+                <p> Language : Arabic</p>
+        
+
+              </div>-->
+              
+            </div>
+          </div>
+      </div>
+
+  </div>
+  
+
+
+</ion-content>

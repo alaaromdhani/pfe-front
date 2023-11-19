@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>add blogs</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="isFormReady">
+  <form class="ion-padding" [formGroup]="blogForm">
+    <div class="form-field">
+      <ion-label [ngClass]="
+        inputFocused['title']?'label-focuced':''
+  
+      ">Title</ion-label>
+      <input (focus)="inputFocused['title']=true" (blur)="this.blogForm.controls['title'].value===''?inputFocused['title']=false:inputFocused['title']=true" formControlName="title">   
+     </div>
+
+     <div >
+      <ion-label id="content"  [ngClass]="  inputFocused['description']?'label-focuced':''
+      " ></ion-label>
+      <quill-editor formControlName="description"></quill-editor>
+    </div>
+    <div>
+      <div *ngIf="photo!==''" class="inner" (click)="reinitializePhoto()">
+        <ion-icon  name="close-outline" class="close-icon"></ion-icon>
+     </div>
+      <div [align]="'center'" class="banner-image" (click)="selectBannerImage()">
+        
+        <ion-icon *ngIf="photo===''" name="image-outline">
+    
+        </ion-icon>
+        <img *ngIf="photo!==''" [src]="photo" alt="">
+      </div>
+    </div>
+    <div>
+
+    </div>
+    <div  class="form-field" class="form-field" (click)="expandFieldsSection()" >
+      <ion-label [ngClass]="
+      selectedFields.length>0?'label-focuced':''
+  
+      ">blog Fields</ion-label>
+      <ion-icon  name="caret-down-outline" ></ion-icon>
+      <input   type="text" readonly>   
+      <div class="field-selected" > 
+        <div *ngFor="let f of selectedFields" class="field-card" [ngStyle]="{
+          'background-color':f.color
+
+        }"> {{f.name}} </div>
+        
+      </div>
+    </div>
+    <div *ngIf="expanded" class="checkboxes" style="text-align: center;">
+      <div *ngFor="let f of allFields" style="display: flex; align-items: center; gap:5px"><input [checked]="selectedField[f.id]" (change)="selectField(f.id)" type="checkbox" id="one" /> <p>{{f.name}}</p> </div> 
+      
+
+    </div>
+     <ion-button expand="block"  (click)="submitForm()" > Submit</ion-button>
+     
+  </form>
+</ion-content>

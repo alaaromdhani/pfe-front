@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>add mission</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form class="ion-padding" [formGroup]="missionForm">
+    <div class="form-field-textarea">
+      <ion-label [ngClass]="
+        inputFocused['message']?'label-focuced':''
+  
+      ">Message</ion-label>
+      <textarea (focus)="inputFocused['message']=true" (blur)="this.missionForm.controls['message'].value===''?inputFocused['message']=false:inputFocused['message']=true" formControlName="message"> 
+      </textarea>  
+      </div>
+      <div class="form-field">
+        <ion-label [ngClass]="
+          inputFocused['lat']||!isInputEmpty('lat')?'label-focuced':''
+    
+        ">lat</ion-label>
+        <input   (click)="inputFocused['lat']=true;chooseLocation('lat')" (blur)="this.missionForm.controls['lat'].value===''?inputFocused['lat']=false:inputFocused['lat']=true" formControlName="lat"> 
+          
+        </div>
+        <div class="form-field">
+          <ion-label [ngClass]="
+            inputFocused['lang'] || !isInputEmpty('lang')?'label-focuced':''
+      
+          ">lang</ion-label>
+          <input  (focus)="inputFocused['lang']=true;chooseLocation('lang')" (blur)="this.missionForm.controls['lang'].value===''?inputFocused['lang']=false:inputFocused['lang']=true" formControlName="lang"> 
+            
+          </div>  
+
+       <div style=" align-items: center;gap:5px">
+        <ion-icon name="add-circle-outline" color="primary"></ion-icon>
+         <a (click)="pickDriver()" > {{choosenDriver?choosenDriver.firstName+" "+choosenDriver.lastName:'choose a driver'}}</a>
+       </div>       
+      <ion-button expand="block"  (click)="submitForm()" > Add Mission</ion-button>
+    
+</form>

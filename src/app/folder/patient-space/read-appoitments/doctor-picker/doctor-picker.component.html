@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon name="arrow-back-outline" (click)="closeModal()"></ion-icon>
+    </ion-buttons>
+    <ion-title>Add Courses</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list class="ion-no-padding">
+
+    <ion-item *ngFor="let u of doctors" (click)="pickADoctor(u.id)">
+      <ion-avatar slot="start">
+        <ion-img class="user-img" [src]="u.profilePicture"></ion-img>
+       
+      
+      </ion-avatar>
+      <ion-label>
+        <div class="withcount">
+          <div class="nameAvatar">
+            <h2>{{u.firstName +' '+u.lastName}}
+            </h2>
+           <!-- <ion-avatar class="chatCount" *ngIf="chat.count">{{chat.count}}</ion-avatar>-->
+          </div>
+
+          <div class="timeEnd">
+            <ion-text slot="end">field</ion-text>
+          </div>
+        </div>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  
+</ion-content>

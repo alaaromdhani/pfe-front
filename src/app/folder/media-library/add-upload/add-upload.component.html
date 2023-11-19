@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Add Upload</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div [align]="'center'">
+    <ion-icon (click)="uploadFile()" name="image-outline">
+
+    </ion-icon>
+  </div>
+  <input type="file" style="display: none;" #hiddenInput>
+
+</ion-content>
+

@@ -1,0 +1,91 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{user?'Update':'Add'}} User </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="this.user" class="container">
+    <div class="outer"
+      [ngStyle]="{'background-image': 'url(' + photo + ')'}">
+        <div class="inner"  [ngStyle]="{'background-color':changedProfilePict?'red':'#075E54' }" (click)="change()">
+           <ion-icon [name]="changedProfilePict?'close-outline':'camera'" class="camera-icon" [ngStyle]="{}" ></ion-icon>
+        </div>
+     </div>
+  </div>
+  
+  <form class="ion-padding" [formGroup]="addUserForm">
+    <div *ngIf="!user" class="form-field">
+      <select (select)="selectRole" formControlName="role_id">
+        <option *ngFor="let r of roles" value="{{r.id}}">{{r.name}}</option>
+      </select>
+    </div>
+    <div class="form-field">
+      <ion-label [ngClass]="
+        inputFocused['firstName']?'label-focuced':''
+  
+      ">FirstName</ion-label>
+      <input (focus)="inputFocused['firstName']=true" (blur)="this.addUserForm.controls['firstName'].value===''?inputFocused['firstName']=false:inputFocused['firstName']=true" formControlName="firstName">   
+    </div>
+    <div class="form-field">
+      <ion-label [ngClass]="
+        inputFocused['lastName']?'label-focuced':''
+  
+      ">LastName</ion-label>
+      <input (focus)="inputFocused['lastName']=true" (blur)="this.addUserForm.controls['lastName'].value===''?inputFocused['lastName']=false:inputFocused['lastName']=true" formControlName="lastName">   
+    </div>
+    <div class="form-field">
+      <ion-label [ngClass]="
+        inputFocused['email']?'label-focuced':''
+  
+      ">Email</ion-label>
+      <input (focus)="inputFocused['email']=true" (blur)="this.addUserForm.controls['email'].value===''?inputFocused['email']=false:inputFocused['email']=true" formControlName="email">   
+    </div>
+    <div class="form-field">
+      <ion-label [ngClass]="
+        inputFocused['phonenumber']?'label-focuced':''
+  
+      ">Phonenumber</ion-label>
+      <input (focus)="inputFocused['phonenumber']=true" (blur)="this.addUserForm.controls['phonenumber'].value===''?inputFocused['phonenumber']=false:inputFocused['phonenumber']=true" formControlName="phonenumber">   
+    </div>
+    <div class="form-field">
+      <ion-label [ngClass]="
+        inputFocused['password']?'label-focuced':''
+  
+      ">Password</ion-label>
+      <input (focus)="inputFocused['password']=true" (blur)="this.addUserForm.controls['password'].value===''?inputFocused['password']=false:inputFocused['password']=true" formControlName="password">   
+    </div>
+    
+    <div *ngIf="user && user.Role?.name==='Doctor'" class="form-field" class="form-field" (click)="expandFieldsSection()" >
+      <ion-label [ngClass]="
+      selectedFields.length>0?'label-focuced':''
+  
+      ">Course Fields</ion-label>
+      <ion-icon  name="caret-down-outline" ></ion-icon>
+      <input   type="text" readonly>   
+      <div class="field-selected" > 
+        <div *ngFor="let f of selectedFields" class="field-card" [ngStyle]="{
+          'background-color':f.color
+
+        }"> {{f.name}} </div>
+        
+      </div>
+    </div>
+    <div *ngIf="expanded" class="checkboxes" style="text-align: center;">
+      <div *ngFor="let f of fields" style="display: flex; align-items: center; gap:5px"><input [checked]="selectedField[f.id]" (change)="selectField(f.id)" type="checkbox" id="one" /> <p>{{f.name}}</p> </div> 
+      
+
+    </div>
+
+ 
+
+   
+    
+     <ion-button expand="block"  (click)="submitForm()" > Submit</ion-button>
+     
+  </form>
+
+
+</ion-content>

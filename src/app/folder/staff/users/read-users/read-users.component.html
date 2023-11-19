@@ -1,0 +1,74 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Users</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <app-search-input (valueChange)="search($event)"></app-search-input>
+  <ion-card *ngFor="let u of users">
+    <ion-card-header color="primary">
+      <ion-card-subtitle>{{u.firstName+' '+u.lastName}}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+       <div class="user-content">
+        <div class="user-profile">
+          <img [src]="u.profilePicture" alt="">
+         </div>
+        <div class="user-info">
+          <div class="profile_top">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="1.25rem" class="iconify iconify--carbon" width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M28.07 21L22 15l6.07-6l1.43 1.41L24.86 15l4.64 4.59L28.07 21zM22 30h-2v-5a5 5 0 0 0-5-5H9a5 5 0 0 0-5 5v5H2v-5a7 7 0 0 1 7-7h6a7 7 0 0 1 7 7zM12 4a5 5 0 1 1-5 5a5 5 0 0 1 5-5m0-2a7 7 0 1 0 7 7a7 7 0 0 0-7-7z"></path></svg>
+            <p> Name :{{u.firstName}} {{u.lastName}}</p>
+          </div>
+          <div class="profile_top">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="1.25rem" class="iconify iconify--tabler" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 5v16M19 5v9M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0M5 14a5 5 0 0 1 7 0a5 5 0 0 0 7 0"></path></svg>    
+            <p> Country : {{u.state_id?u.state_id:'Tunisia'}}</p>
+          </div>
+          <div class="profile_top">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="1.25rem" class="iconify iconify--tabler" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m5 12l5 5L20 7"></path></svg>
+            <p> Status : Active</p>
+           
+          </div>
+          <div class="profile_top">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="1.25rem" class="iconify iconify--tabler" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><rect width="16" height="16" x="4" y="5" rx="2"></rect><path d="M16 3v4M8 3v4m-4 4h16m-9 4h1m0 0v3"></path></g></svg>      
+            <p> joined july 15 2023 </p>
+           </div>
+          
+   
+        </div>
+       </div>
+    </ion-card-content>
+    <ion-row  class="cardfooter">
+      <div class="cardfooter-stuff">
+        <div class="other" *ngIf="permissions &&permissions['user']  && permissions['user'].includes('update')"
+        (click)="updateUser(u.id)">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="20" class="iconify iconify--tabler" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M7 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1"></path><path d="M20.385 6.585a2.1 2.1 0 0 0-2.97-2.97L9 12v3h3l8.385-8.415zM16 5l3 3"></path></g></svg>
+        </div>
+        <div class="other">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="20" class="iconify iconify--tabler" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><circle cx="12" cy="12" r="2"></circle><path d="M22 12c-2.667 4.667-6 7-10 7s-7.333-2.333-10-7c2.667-4.667 6-7 10-7s7.333 2.333 10 7"></path></g></svg>
+         </div>
+        <div *ngIf="permissions &&permissions['user']  && permissions['user'].includes('delete')"
+         (click)="deleteUser(u.id)" class="other">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="1.375rem" class="iconify iconify--flat-color-icons" width="1em" height="1em" viewBox="0 0 48 48">
+            <path fill="#90CAF9" d="M43 30V18c0-2.2-1.8-4-4-4H9c-2.2 0-4 1.8-4 4v12c0 2.2 1.8 4 4 4h30c2.2 0 4-1.8 4-4zM9 18h30v12H9V18z"></path>
+            <circle cx="38" cy="38" r="10" fill="#F44336"></circle>
+            <g fill="#fff">
+                <path d="m43.31 41.181l-2.12 2.122l-8.485-8.484l2.121-2.122z"></path>
+                <path d="m34.819 43.31l-2.122-2.12l8.484-8.485l2.122 2.121z"></path>
+            </g>
+        </svg>
+         </div>
+        
+      </div>
+    </ion-row>
+  </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button *ngIf="permissions &&permissions['user']  && permissions['user'].includes('create')"
+    (click)="addUser()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

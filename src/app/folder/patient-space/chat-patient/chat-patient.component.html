@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>chat </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+ 
+    <ion-list class="ion-no-padding">
+  
+      <ion-item *ngFor="let u of doctors">
+        <ion-avatar slot="start">
+          <ion-img class="user-img" [src]="u.profilePicture"></ion-img>
+         
+        
+        </ion-avatar>
+        <ion-label>
+          <div class="withcount">
+            <div class="nameAvatar">
+              <h2>{{u.firstName +' '+u.lastName}}
+              </h2>
+              
+             <!-- <ion-avatar class="chatCount" *ngIf="chat.count">{{chat.count}}</ion-avatar>-->
+            </div>
+            
+  
+            <div (click)="createRoom(u.id)" class="timeEnd">
+              <ion-icon name="chatbubbles-outline"></ion-icon>
+            </div>
+            
+          </div>
+
+        </ion-label>
+       
+      </ion-item>
+    </ion-list>
+    
+  </ion-content>
+  
+

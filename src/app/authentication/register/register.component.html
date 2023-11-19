@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="heading">
+    <h1>Create Account </h1>
+    <p> create an account to access our best offers </p>
+  </div>
+  <form class="ion-padding" [formGroup]="loginForm">
+    <div class="form-field">
+      <ion-label [ngClass]="  inputFocused['firstName']?'label-focuced':''
+      " >First Name</ion-label>
+      <input (focus)="inputFocused['firstName']=true" (blur)="inputFocused['firstName']=false" formControlName="firstName">
+    </div>
+    <div class="form-field">
+      <ion-label [ngClass]="  inputFocused['lastName']?'label-focuced':''
+      " >Last Name</ion-label>
+      <input (focus)="inputFocused['lastName']=true" (blur)="inputFocused['lastName']=false" formControlName="lastName">
+    </div>
+    <div class="form-field">
+      <ion-label [ngClass]="  inputFocused['phonenumber']?'label-focuced':''
+      " >PhoneNumber</ion-label>
+      <input (focus)="inputFocused['phonenumber']=true" (blur)="inputFocused['phonenumber']=false" formControlName="phonenumber">
+    </div>
+    <div class="form-field">
+      <ion-label [ngClass]="  inputFocused['email']?'label-focuced':''
+      " >Email</ion-label>
+      <input (focus)="inputFocused['email']=true" (blur)="inputFocused['email']=false" formControlName="email">
+    </div>
+    <div class="form-field">
+      <ion-label [ngClass]="  inputFocused['username']?'label-focuced':''
+      " >Username</ion-label>
+      <input (focus)="inputFocused['username']=true" (blur)="inputFocused['username']=false" formControlName="username">
+    </div>
+    <div class="form-field">
+      <ion-label [ngClass]="
+        inputFocused['password']?'label-focuced':''
+
+      ">Password</ion-label>
+      <input (focus)="inputFocused['password']=true" (blur)="inputFocused['password']=false" formControlName="password">   
+     </div>
+     
+    
+     <ion-button expand="block"  (click)="signUp()" > Register</ion-button>
+     
+  </form>
+
+</ion-content>

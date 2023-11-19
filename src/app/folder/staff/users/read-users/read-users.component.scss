@@ -1,0 +1,52 @@
+*{
+    font-family: lato;
+}
+ion-card-subtitle{
+    font-weight: 400;
+    font-size: 14px;
+
+}
+.user-content{
+    gap: 10px;
+    padding: 10px;
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    place-content: center space-around;
+    align-items: center;
+    
+}
+.user-profile{
+        
+
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    place-content: center;
+    align-items: center;
+    flex: 1 1 100%;
+    max-width: 30%;
+ 
+}
+.user-info{
+
+    
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    flex: 1 1 100%;
+    max-width: 70%;
+
+}
+.profile_top{
+    display: flex;
+    gap:10px
+}
+
+
+.cardfooter-stuff{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}

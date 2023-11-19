@@ -1,0 +1,66 @@
+.heading{
+    margin-top: 10vh;    
+    text-align: center;
+    h1{
+        font-size: 2rem;
+
+    }
+    p{
+        color: #838383;
+    }
+
+
+}
+.log{
+
+    text-align: center;
+    margin-top:45px ;
+}
+.social-login{
+    margin-top: 45px;
+    text-align: center;
+    p{
+        color: #838383;
+    }
+    ion-button{
+        width: 40%;
+        height: 50px;
+        ion-icon{
+            font-size: 1.6rem;
+        }
+    }
+    .twitter{
+        
+        margin-right:20px;
+        --background:#00acee
+    }
+    .facebook{
+        
+        --background:#4267b2
+    }
+    p{
+        color:#838383 ;
+
+    }
+  
+
+}
+.email-login{
+
+    margin-top: 45px;
+    text-align: center;
+    p{
+        color: #838383;
+    }
+    .signin{
+        width: 85%;
+        height: 50px; 
+        text-transform: 1.6rem;
+        font-size: 1.6rem;
+    }
+}
+.image{
+    text-align: center;
+
+
+}

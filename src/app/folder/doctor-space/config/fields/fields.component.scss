@@ -1,0 +1,28 @@
+*{
+    font-family: lato;
+}
+.comments_section {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    .commented_users {
+        flex: none;
+        white-space: nowrap;
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        img{
+            height: 30px;
+        }
+    }
+    .load-more{
+        font-size: 12;
+        color: #fdae3f;;
+    }
+    
+}
+.card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

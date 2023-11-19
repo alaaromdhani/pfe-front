@@ -1,0 +1,85 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="heading">
+    <h1>login now</h1>
+    <p> please login to continue using our app </p>
+  </div>
+  <div class="social-login">
+    <p>
+      Enter via social network
+    </p>
+    <div class="links">
+      <ion-button class="twitter">
+          <ion-icon name="logo-twitter">
+
+          </ion-icon>
+          
+      </ion-button>
+      <ion-button class="facebook">
+        <ion-icon name="logo-facebook">
+
+        </ion-icon>
+        
+    </ion-button>
+    </div>
+  </div>
+  <form [formGroup]="formGroup">
+    <div class="email-login">
+      <p>
+        Or login with email
+      </p>
+      <div class="formField">
+        <input type="text" formControlName="identifier"  name="email" id="email">
+        <label for="identifier"  placeholder="email/phonenumber">email</label>
+        <div *ngIf="testInputError('identifier')" class="error-message">
+          <ion-icon name="information-circle-outline"></ion-icon>
+          <span> email  is required</span>
+        
+        </div>
+        
+        <!-- <div class="error-message" *ngIf="">
+          <ion-icon name="information-circle-outline"></ion-icon>
+          <span>wowowow</span>
+        </div> -->     
+      </div>
+      <div class="formField">
+        <input type="password" formControlName="password" name="password" id="password">
+        <label for="password" placeholder="password"> password</label>
+        <div class="error-message" *ngIf="testInputError('password')">
+          <ion-icon name="information-circle-outline"></ion-icon>
+          <span> password is required</span>
+        
+        </div>
+      </div>
+
+      <div class="other-links">
+      
+        <div class="remember-me">
+          <ion-checkbox>
+    
+          </ion-checkbox>      
+          <p>remember-me</p>
+        
+        </div>
+        <p class="forgot">forget password</p>
+    
+      </div>
+    </div>
+    <div class="login-button">
+      <ion-button (click)="login()" class="login">
+         Login
+      </ion-button>
+      <p> Don't have an account? <span> signup </span> </p>
+    </div>
+    
+  </form>
+  
+
+</ion-content>

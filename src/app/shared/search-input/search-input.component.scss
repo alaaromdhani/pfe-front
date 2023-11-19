@@ -1,0 +1,13 @@
+.search-section{
+    
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+.search-input{
+    border-radius: 28px;
+    border: none;
+    visibility: hidden;
+    width: 0px;
+    transition:width 0.6s ease ;
+}

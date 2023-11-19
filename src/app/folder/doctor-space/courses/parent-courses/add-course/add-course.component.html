@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon name="arrow-back-outline" (click)="backToCourses()"></ion-icon>
+    </ion-buttons>
+    <ion-title>Add Courses</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="isFormReady">
+
+ 
+  <form class="ion-padding" [formGroup]="addCourseForm">
+    <div class="form-field">
+      <ion-label [ngClass]="
+        inputFocused['name']?'label-focuced':''
+  
+      ">Course Name</ion-label>
+      <input (focus)="inputFocused['name']=true" (blur)="this.addCourseForm.controls['name'].value===''?inputFocused['name']=false:inputFocused['name']=true" formControlName="name">   
+    </div>
+    <div class="form-field-textarea">
+      <ion-label [ngClass]="
+        inputFocused['description']?'label-focuced':''
+  
+      ">Description</ion-label>
+      <textarea (focus)="inputFocused['description']=true" (blur)="this.addCourseForm.controls['description'].value===''?inputFocused['description']=false:inputFocused['description']=true" formControlName="description"> 
+        </textarea>  
+    </div>
+    <div  class="form-field">
+      <select  formControlName="field_id">
+        <option *ngFor="let r of fields" value="{{r.id}}">{{r.name}}</option>
+      </select>
+    </div>
+
+     <ion-button expand="block"  (click)="submitForm()" > Add Course</ion-button>
+     
+  </form>
+
+
+</ion-content>

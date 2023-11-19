@@ -1,0 +1,14 @@
+.subcourse {
+    flex: none;
+    white-space: nowrap;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    svg{
+        height: 30px;
+    }
+}
+.rating-star{
+    color:yellow;
+
+}

@@ -1,0 +1,18 @@
+<div class="search-section" id="section" style="margin-left:25px ; margin-top: 10px;">
+  
+  
+  <ion-icon name="search-outline" style="font-size: 25px;color: gray;" (click)="showInput()">
+
+  </ion-icon>
+  <input type="text" 
+    [(ngModel)]="searchString"
+    (ngModelChange)="changeValue()"
+  style="
+    border-color: gray;
+    font-family: lato;
+  border-radius: 28px;
+  
+  visibility: hidden;
+  width: 0px;
+  transition:width 0.6s ease ;" id="search">
+</div>

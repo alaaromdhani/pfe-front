@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> test </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content >
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      
+      <ion-tab-button (click)="viewVideo()"  tab="library">
+        <ion-icon name="videocam-outline"></ion-icon>
+        video
+      </ion-tab-button>
+      <ion-tab-button (click)="viewDocument()" tab="search">
+        <ion-icon name="document-text-outline"></ion-icon>
+        document
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+
+</ion-content>

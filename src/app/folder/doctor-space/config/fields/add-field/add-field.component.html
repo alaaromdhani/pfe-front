@@ -1,0 +1,44 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon name="arrow-back-outline" (click)="closeModal()"></ion-icon>
+    </ion-buttons>
+    <ion-title>{{add?'Add':'Update'}} Field</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="add || (!add && f)">
+
+ 
+  <form class="ion-padding" [formGroup]="fieldForm">
+    <div class="form-field">
+      <ion-label [ngClass]="
+        inputFocused['name']?'label-focuced':''
+  
+      ">Field Name</ion-label>
+      <input (focus)="inputFocused['name']=true" (blur)="this.fieldForm.controls['name'].value===''?inputFocused['name']=false:inputFocused['name']=true" formControlName="name">   
+    </div>
+    <div class="form-field">
+      <ion-label [ngClass]="
+        inputFocused['color']?'label-focuced':''
+  
+      ">Field color</ion-label>
+      <input (focus)="inputFocused['color']=true" (blur)="this.fieldForm.controls['color'].value===''?inputFocused['color']=false:inputFocused['color']=true" formControlName="color">   
+    </div>
+    <div class="form-field-textarea">
+      <ion-label [ngClass]="
+        inputFocused['short_description']?'label-focuced':''
+  
+      ">Description</ion-label>
+      <textarea (focus)="inputFocused['short_description']=true" (blur)="this.fieldForm.controls['short_description'].value===''?inputFocused['short_description']=false:inputFocused['short_description']=true" formControlName="short_description"> 
+        </textarea>  
+    </div>
+       
+
+     <ion-button expand="block"  (click)="submitForm()" > {{add?'Add':'Update'}} Field</ion-button>
+     
+  </form>
+
+
+</ion-content>

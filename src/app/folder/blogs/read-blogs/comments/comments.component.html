@@ -1,0 +1,71 @@
+<ion-content>
+  
+  <ion-item-divider>
+  </ion-item-divider>
+  <ion-item>
+    <div class="mb1">
+        <div style="display: flex;align-items: center;
+        gap: 0.5em;">
+          <ion-icon name="arrow-back-outline" (click)="closeModal()"></ion-icon>
+          <h2 class="h3 mt3 mb1" style="right:0px">
+            2 réponses
+          </h2>
+          
+        </div>
+      <hr>
+    </div>
+   </ion-item>
+   <div class="forum-messages">
+    <div *ngFor="let c of comments" class="forum-message is-reply " id="message-139205">
+        <div class="forum-avatar"> <img [src]="c.User.profilePicture" alt="" class="forum-message__avatar"> </div>
+        <div class="forum-message__header"> <a href="/profil/1" class="forum-message__author"> {{c.User.firstName +" "+c.User.lastName}} </a>
+            <div class="forum-message__meta"> <a href="#message-139205">
+                    Il y a 4 jours
+                </a>
+                <a (click)="deleteComment(c.id)">
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="1.375rem" class="iconify iconify--flat-color-icons" width="1em" height="1em" viewBox="0 0 48 48">
+                    <path fill="#90CAF9" d="M43 30V18c0-2.2-1.8-4-4-4H9c-2.2 0-4 1.8-4 4v12c0 2.2 1.8 4 4 4h30c2.2 0 4-1.8 4-4zM9 18h30v12H9V18z"></path>
+                    <circle cx="38" cy="38" r="10" fill="#F44336"></circle>
+                    <g fill="#fff">
+                        <path d="m43.31 41.181l-2.12 2.122l-8.485-8.484l2.121-2.122z"></path>
+                        <path d="m34.819 43.31l-2.122-2.12l8.484-8.485l2.122 2.121z"></path>
+                    </g>
+                </svg>
+                 </a>
+             
+            </div>
+
+        </div>
+        
+        <ion-card>
+          <ion-card-content>
+            <ion-label [innerHTML]="contents[c.id]?contents[c.id]:''">
+            </ion-label>
+          </ion-card-content>
+        </ion-card>
+       <!-- <div class="forum-message__body">
+            <div class="formatted card js-content p2">
+                <p>Je te conseille de suivre la formation PHP <a target="_blank" rel="noreferrer nofollow" href="https://grafikart.fr/formations/php">https://grafikart.fr/formations/php</a> car ce n'est pas forcément une chose complexe que tu essais de faire.</p>
+                <p>Si tu bloque sur l'algorithme (logique) voila la piste</p>
+                <ul>
+                    <li>Tu récupère ce que l'utilisateur a posté dans le champs en utilisant <code>$_POST</code></li>
+                    <li>Tu vérifie la valeur correspondant à ton champs <code>$_POST['password'] === 'ESCAPE'</code></li>
+                    <li>Tu utilise cette vérification pour afficher ou non l'élément que tu souhaite.</li>
+                </ul>
+            </div>
+            <div class="js-forum-edit"></div>
+        </div>-->
+    </div>
+    
+    <div *ngIf="permissions &&permissions['blogcomment'] && permissions['blogcomment'].includes('create')" class="forum-message">
+      <form [formGroup]="commentForm"  class="ion-padding">
+        <quill-editor formControlName="content" ></quill-editor>
+    
+        <ion-button expand="block"  (click)="submitForm()" > Submit</ion-button>
+ 
+      </form>
+    </div>
+</div>
+
+
+</ion-content>

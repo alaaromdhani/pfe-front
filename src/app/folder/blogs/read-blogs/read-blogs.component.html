@@ -1,0 +1,75 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>blogs</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card *ngFor="let blog of blogs">
+      <img [src]="blog.Banner.link" alt="">
+      <ion-card-header>
+        <div style="display: flex;justify-content: space-between;align-items: center;">
+          <ion-card-title>
+            {{blog.title}}
+          </ion-card-title>
+          <div style="display: flex;gap: 5px;">
+            <div *ngIf="permissions['blog'] &&permissions['blog']  && permissions['blog'].includes('update')" class="other" (click)="updateBlog(blog.id)">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="20" class="iconify iconify--tabler" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M7 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1"></path><path d="M20.385 6.585a2.1 2.1 0 0 0-2.97-2.97L9 12v3h3l8.385-8.415zM16 5l3 3"></path></g></svg>
+            </div>
+       
+            <div *ngIf="permissions['blog'] &&permissions['blog']  && permissions['blog'].includes('delete')"  (click)="deleteBlog(blog.id)" class="other">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" font-size="1.375rem" class="iconify iconify--flat-color-icons" width="1em" height="1em" viewBox="0 0 48 48">
+                <path fill="#90CAF9" d="M43 30V18c0-2.2-1.8-4-4-4H9c-2.2 0-4 1.8-4 4v12c0 2.2 1.8 4 4 4h30c2.2 0 4-1.8 4-4zM9 18h30v12H9V18z"></path>
+                <circle cx="38" cy="38" r="10" fill="#F44336"></circle>
+                <g fill="#fff">
+                    <path d="m43.31 41.181l-2.12 2.122l-8.485-8.484l2.121-2.122z"></path>
+                    <path d="m34.819 43.31l-2.122-2.12l8.484-8.485l2.122 2.121z"></path>
+                </g>
+            </svg>
+             </div>
+  
+          </div>
+        </div>
+        <ion-card-subtitle>
+          {{blog.title}}
+        </ion-card-subtitle>
+       
+      </ion-card-header>
+      <ion-card-content>
+        <div class="topic-header__meta">
+          <a class="topic-header__author">
+            <img [src]="blog.User.profilePicture" alt="" class="rounded mr1" width="25">
+              {{blog.User.firstName+' '+blog.User.lastName}}
+          </a>
+          <div *ngIf="blog.Fields && blog.Fields.length" class="topic-header__tags">
+          <div class="topic-tag">
+            <a *ngFor="let f of blog.Fields"   [ngStyle]="{
+              'background-color':f.color,
+              'padding': '4px'
+            }" > {{f.name}}</a>
+          </div>
+        </div>
+        </div>
+        <ion-label [innerHTML]="descriptions[blog.id]?descriptions[blog.id]:''" color="medium">
+            
+        </ion-label> 
+        <div *ngIf="permissions['blogcomment'] &&permissions['blogcomment']  && permissions['blogcomment'].includes('read')"   class="comments_section">
+            <a  (click)="displayComments(blog.id)"> comments </a>
+            <div class="commented_users">
+              <img src="assets/images/m.png" alt="" class="rounded mr1">
+              <img src="assets/images/m.png" alt="" class="rounded mr1">
+              <img src="assets/images/m.png" alt="" class="rounded mr1">
+              
+            </div>
+        </div>
+      </ion-card-content>
+
+    </ion-card>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button *ngIf="permissions &&permissions['blog']  && permissions['blog'].includes('create')" (click)="addBlog()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+</ion-content>

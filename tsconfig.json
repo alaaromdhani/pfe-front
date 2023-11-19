@@ -2,6 +2,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "skipLibCheck": true,
+    "strictPropertyInitialization":false,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -25,9 +27,12 @@
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
+    "strictTemplates": false,
+
+    "strictPropertyInitialization":false,
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+  
   }
 }

@@ -1,0 +1,48 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon name="arrow-back-outline" (click)="backToCourses()"></ion-icon>
+    </ion-buttons>
+    <ion-title>Add Document Courses</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+ 
+  <form class="ion-padding" [formGroup]="addDocumentCourseForm">
+    <div class="form-field">
+      <ion-label [ngClass]="
+        inputFocused['name']?'label-focuced':''
+  
+      ">Course Name</ion-label>
+      <input (focus)="inputFocused['name']=true" (blur)="this.addDocumentCourseForm.controls['name'].value===''?inputFocused['name']=false:inputFocused['name']=true" formControlName="name">   
+    </div>
+    <div>
+      <div *ngIf="photo!==''" class="inner" (click)="reinitializePhoto()">
+        <ion-icon  name="close-outline" class="close-icon"></ion-icon>
+     </div>
+      <div [align]="'center'" class="banner-image" (click)="selectDocument()">
+        
+        <ion-icon *ngIf="photo===''" name="image-outline">
+    
+        </ion-icon>
+        <img *ngIf="photo!==''" [src]="photo" alt="">
+      </div>
+    </div>
+    <div class="form-field-textarea">
+      <ion-label [ngClass]="
+        inputFocused['description']?'label-focuced':''
+  
+      ">Description</ion-label>
+      <textarea (focus)="inputFocused['description']=true" (blur)="this.addDocumentCourseForm.controls['description'].value===''?inputFocused['description']=false:inputFocused['description']=true" formControlName="description"> 
+        </textarea>  
+    </div>
+
+     <ion-button expand="block"  (click)="submitForm()" > Add Course</ion-button>
+     
+  </form>
+
+
+</ion-content>
