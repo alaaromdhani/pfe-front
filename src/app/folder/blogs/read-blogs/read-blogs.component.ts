@@ -6,7 +6,6 @@ import { BlogService } from 'src/app/services/blog.service';
 import { Blog } from 'src/app/models/Blog';
 import { HandlerError, SuccessHandlor } from 'src/utils/ResultHandlor';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-
 import { ConfigService } from 'src/app/services/config.service';
 
 @Component({
