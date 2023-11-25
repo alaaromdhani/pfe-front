@@ -12,7 +12,7 @@ export class ChatService {
   
   constructor() { 
     this.io =sailsIoClient(socketIoClient);
-    this.io.sails.url ='http://localhost:1337/' 
+    this.io.sails.url ='https://faroukallani.me/' 
     //@ts-ignore
      //console.log(Object.keys(this.io.io))
      

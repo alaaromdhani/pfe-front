@@ -57,12 +57,7 @@
         </ion-label> 
         <div *ngIf="permissions['blogcomment'] &&permissions['blogcomment']  && permissions['blogcomment'].includes('read')"   class="comments_section">
             <a  (click)="displayComments(blog.id)"> comments </a>
-            <div class="commented_users">
-              <img src="assets/images/m.png" alt="" class="rounded mr1">
-              <img src="assets/images/m.png" alt="" class="rounded mr1">
-              <img src="assets/images/m.png" alt="" class="rounded mr1">
-              
-            </div>
+            
         </div>
       </ion-card-content>
 
