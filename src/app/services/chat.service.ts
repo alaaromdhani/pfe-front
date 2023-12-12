@@ -12,7 +12,7 @@ export class ChatService {
   
   constructor() { 
     this.io =sailsIoClient(socketIoClient);
-    this.io.sails.url ='http://romdhani.me/' 
+    this.io.sails.url ='http://romdhani.me:1337/' 
     //@ts-ignore
      //console.log(Object.keys(this.io.io))
      
