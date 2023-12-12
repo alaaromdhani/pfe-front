@@ -1,4 +1,4 @@
-export const baseLink ='https://romdhani.me/'
+export const baseLink ='https://romdhani.me'
 export const undashboardUsers=[{
     name:'Patient',
 }]
